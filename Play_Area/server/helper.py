@@ -31,7 +31,7 @@ def create_json(result,person_enc):
     data["name"] = result
     data["encoding"] = person_enc.tolist()
     data["images"] = []
-    with open(f"data/{result}.json", "w") as json_file:
+    with open(f"static/data/{result}.json", "w") as json_file:
         json.dump(data, json_file,indent=4)
 
 '''
@@ -52,9 +52,9 @@ def compare_faces(person_enc):
 def get_all_encodings():
     encodings = []
     names = []
-    for filename in os.listdir("data"):
+    for filename in os.listdir("static/data"):
         if filename.endswith(".json"):
-            with open(f"data/{filename}", "r") as json_file:
+            with open(f"static/data/{filename}", "r") as json_file:
                 data = json.load(json_file)
                 encodings.append(np.array(data["encoding"]))
                 names.append(data["name"])
@@ -77,7 +77,7 @@ def is_blurry(image, threshold=100.0):
     return laplacian_var < threshold
 
 def get_images(tag):
-    json_file = os.path.join("data",tag+".json")
+    json_file = os.path.join("static","data",tag+".json")
     with open(json_file, 'r') as file:
         data = json.load(file)
     return data["images"]

@@ -1,14 +1,14 @@
 from threading import Thread
-from helper import find_persons, compare_faces
+from Show_Area.client.helper import find_persons, compare_faces
 import cv2
 import time
 from icecream import ic
 
 class Camera:
     def __init__(self, camera=0):
-        self.user = None
+        self.user = 0
         self._stop = False
-        self.cam = cv2.VideoCapture(camera)
+        # self.cam = cv2.VideoCapture(camera)
         ic("Object Created")
 
     def start_process(self):
@@ -21,28 +21,29 @@ class Camera:
 
     def process(self):
         while not self._stop:
-            ret, frame = self.cam.read()
-            if not ret:
-                print("Error Occurred: Video is not received successfully")
-                self.stop_process()
-                return
+            # ret, frame = self.cam.read()
+            # if not ret:
+            #     print("Error Occurred: Video is not received successfully")
+            #     self.stop_process()
+            #     return
             
-            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-            persons = find_persons(frame_rgb)
+            # persons = find_persons(frame_rgb)
 
-            if persons:
-                for person in persons:
-                    tag = compare_faces(person)
-                    if tag != -1:
-                        ic(tag)
-                        self.user = tag
-                print(self.user)
+            # if persons:
+            #     for person in persons:
+            #         tag = compare_faces(person)
+            #         if tag != -1:
+            #             ic(tag)
+            #             self.user = tag
+            #     print(self.user)
 
-            # Store the frame to be displayed later
-            self.current_frame = frame
+            # # Store the frame to be displayed later
+            # self.current_frame = frame
+            self.user += 1
 
-            time.sleep(0.1)  # Add a small delay to prevent high CPU usage
+            time.sleep(1)  # Add a small delay to prevent high CPU usage
 
     def show_frame(self):
         while not self._stop:
@@ -52,6 +53,7 @@ class Camera:
                 self.stop_process()
 
 if __name__ == '__main__':
+    
     cam = Camera()
     cam.start_process()
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Viewer</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <h1>Image Viewer</h1>
+    <div>
+        <img id="image-display" src="/static/data/1.jpeg" alt="Image will be displayed here" style="width: 20em; height: 20em;">
+    </div>
+    <button id="prev-button">Previous</button>
+    <button id="next-button">Next</button>
+</body>
+</html>
