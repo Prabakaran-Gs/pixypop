@@ -1,5 +1,5 @@
 .venv
-data
-images
-client/__pycache__
-server/__pycache__
+static/data
+static/images
+Show_Area/client/__pycache__
+Play_Area/server/__pycache__
