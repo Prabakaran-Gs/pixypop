@@ -6,12 +6,21 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="stylesheet" href="{{url_for('static',filename='css/stylesheet.css')}}">
 </head>
+<style>
+    body{
+        background-image: url("/static/asset/bg.jpg");
+        background-size: cover;
+    }
+</style>
 <body>
-    <h1>Image Viewer</h1>
-    <div>
+    <h1>Pixy-Pop</h1>
+    <div class="image-view">
         <img id="image-display" src="/static/data/1.jpeg" alt="Image will be displayed here" style="width: 20em; height: 20em;">
     </div>
-    <button id="prev-button">Previous</button>
-    <button id="next-button">Next</button>
+    <div class="button">
+        <button id="prev-button" class = "button-36">Previous</button>
+        <button id="next-button"  class = "button-36">Next</button>
+    </div>
+    
 </body>
 </html>
