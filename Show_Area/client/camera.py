@@ -3,6 +3,7 @@ from Show_Area.client.helper import find_persons, compare_faces
 import cv2
 import time
 from icecream import ic
+ic.disable()
 
 class Camera:
     def __init__(self, camera=0):
@@ -37,7 +38,6 @@ class Camera:
                     if tag != -1:
                         ic(tag)
                         self.user = tag
-                print(self.user)
 
             # Store the frame to be displayed later
             self.current_frame = frame
