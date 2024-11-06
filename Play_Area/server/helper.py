@@ -4,6 +4,10 @@ import os
 import numpy as np
 import cv2
 import brisque
+import icecream as ic
+
+BEST_VAL = 35
+BLUR_THRESHOLD = 100
 
 def find_persons(image):
     '''
@@ -65,16 +69,17 @@ def get_all_encodings():
     Best Image Check
 '''
 def is_best(image):
+    import brisque
     brisque = brisque.BRISQUE()
     score = brisque.score(image)
-    print("brisque :",score)
-    return score < 25 and score > 0
+    ic(score)   #! Printing the brisque score
+    return score < BEST_VAL and score > 0
 
-def is_blurry(image, threshold=100.0):
+def is_blurry(image):
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     laplacian_var = cv2.Laplacian(gray, cv2.CV_64F).var()
-    print("Blur : ",laplacian_var)
-    return laplacian_var < threshold
+    ic(laplacian_var)   #! Printing the laplacian_blur
+    return laplacian_var < BLUR_THRESHOLD
 
 def get_images(tag):
     json_file = os.path.join("static","data",tag+".json")

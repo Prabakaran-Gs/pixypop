@@ -2,10 +2,9 @@ import cv2
 import json
 from queue import Queue
 from threading import Thread
-from Play_Area.server.helper import get_name, compare_faces , create_json, find_persons , is_best , is_blurry
+from Play_Area.server.helper import get_name, compare_faces , create_json, find_persons , is_best , is_blurry #?  Play_Area.server.helper 
 
 QUEUE_SIZE = 5
-           
 
 class Sever:
 
@@ -35,8 +34,8 @@ class Sever:
                 '''
                 Best Implementation done
                 '''
-                if persons and is_best(frame_rgb) and is_blurry(frame_rgb):
-                    frame_name = "images/"+str(self.counter)+".jpg"
+                if len(persons) and is_best(frame_rgb) and is_blurry(frame_rgb):
+                    frame_name = "static/images/"+str(self.counter)+".jpg"
                     cv2.imwrite(frame_name,frame)
                     self.counter += 1
                     for person_enc in persons:
@@ -83,7 +82,7 @@ class Sever:
         return tag
     
     def store_person (self,tag,image_name):
-        json_file = "data/"+str(tag)+".json"
+        json_file = "static/data/"+str(tag)+".json"
         with open(json_file, 'r') as file:
             data = json.load(file)
 
