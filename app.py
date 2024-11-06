@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, jsonify
-# from Show_Area.client.camera import Camera
+from Show_Area.client.camera import Camera
 import os
 import json
 
@@ -21,11 +21,11 @@ def home():
 
 @app.route('/get_image_paths')
 def get_value():
-    image_paths = get_images(None)
+    image_paths = get_images(camera.user)
     return jsonify(image_paths)
 
 
 if __name__ == "__main__":
-    # camera = Camera()
-    # camera.start_process()
+    camera = Camera()
+    camera.start_process()
     app.run(debug=False)

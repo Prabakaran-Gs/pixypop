@@ -1,5 +1,6 @@
 from threading import Thread
-from helper import find_persons, compare_faces
+
+from Show_Area.client.helper import find_persons, compare_faces
 import cv2
 import time
 from icecream import ic
@@ -29,7 +30,6 @@ class Camera:
                 return
             
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            ic(frame_rgb.shape)
 
             persons = find_persons(frame_rgb)
 

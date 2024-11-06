@@ -2,7 +2,7 @@ import cv2
 import json
 from queue import Queue
 from threading import Thread
-from ..helper import get_name, compare_faces , create_json, find_persons , is_best , is_blurry
+from Play_Area.server.helper import get_name, compare_faces , create_json, find_persons , is_best , is_blurry
 
 QUEUE_SIZE = 5
            
